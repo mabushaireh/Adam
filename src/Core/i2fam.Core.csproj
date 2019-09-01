@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Data\josn\**" />
+    <EmbeddedResource Remove="Data\josn\**" />
+    <None Remove="Data\josn\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\json\ar\countries.json" />
+    <EmbeddedResource Include="Data\json\ar\horoscopes.json" />
+    <EmbeddedResource Include="Data\json\en\countries.json" />
+    <EmbeddedResource Include="Data\json\en\horoscopes.json" />
+    <EmbeddedResource Include="Data\json\familymembers.json" />
+    <EmbeddedResource Include="Email\Templates\en\AccountActivated.template" />
+    <EmbeddedResource Include="Email\Templates\en\AccountCreated.template" />
+    <EmbeddedResource Include="Email\Templates\en\familyMemberUpdated.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Tools\Settings.StyleCop" Link="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Sendgrid" Version="9.9.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
+ 
+</Project>

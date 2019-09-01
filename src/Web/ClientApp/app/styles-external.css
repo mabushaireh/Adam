@@ -1,0 +1,222 @@
+﻿#pre-bootstrap {
+    background-color: #262626;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    z-index: 999999;
+}
+
+    #pre-bootstrap div.messaging {
+        color: #FFFFFF;
+        font-family: monospace;
+        left: 0px;
+        margin-top: -107px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        top: 50%;
+    }
+
+    #pre-bootstrap h1 {
+        font-size: 26px;
+        line-height: 35px;
+        margin: 0px 0px 20px 0px;
+    }
+
+    #pre-bootstrap p {
+        font-size: 18px;
+        line-height: 14px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    
+
+.prebootShow {
+    opacity: 1 !important;
+}
+
+.prebootStep {
+    opacity: 0;
+    transition: .5s ease-in-out all;
+}
+
+
+/*loader*/
+/* Absolute Center Spinner */
+
+
+.cs-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.cs-loader-inner {
+    transform: translateY(-50%);
+    top: 60%;
+    position: absolute;
+    width: calc(100% - 200px);
+    color: #FFF;
+    padding: 0 100px;
+    text-align: center;
+}
+
+    .cs-loader-inner label {
+        font-size: 20px;
+        opacity: 0;
+        display: inline-block;
+        color: gray;
+    }
+
+@keyframes lol {
+    0% {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+
+    33% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    66% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+}
+
+@-webkit-keyframes lol {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-300px);
+    }
+
+    33% {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+    }
+
+    66% {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateX(300px);
+    }
+}
+
+.cs-loader-inner label:nth-child(6) {
+    -webkit-animation: lol 3s infinite ease-in-out;
+    animation: lol 3s infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(5) {
+    -webkit-animation: lol 3s 100ms infinite ease-in-out;
+    animation: lol 3s 100ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(4) {
+    -webkit-animation: lol 3s 200ms infinite ease-in-out;
+    animation: lol 3s 200ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(3) {
+    -webkit-animation: lol 3s 300ms infinite ease-in-out;
+    animation: lol 3s 300ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(2) {
+    -webkit-animation: lol 3s 400ms infinite ease-in-out;
+    animation: lol 3s 400ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(1) {
+    -webkit-animation: lol 3s 500ms infinite ease-in-out;
+    animation: lol 3s 500ms infinite ease-in-out;
+}
+/* Required field START */
+
+.required-field-block {
+    position: relative;
+}
+
+    .required-field-block .required-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin: -0.25em 0.25em 0em;
+        background-color: #E8E8E8;
+        border-color: #E8E8E8;
+        padding: 0.5em 0.8em;
+        color: rgba(0, 0, 0, 0.65);
+        text-transform: uppercase;
+        font-weight: normal;
+        border-radius: 0.325em;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: background 0.1s linear;
+        -moz-transition: background 0.1s linear;
+        transition: background 0.1s linear;
+        font-size: 75%;
+    }
+
+    .required-field-block .required-icon {
+        background-color: transparent;
+        position: absolute;
+        top: 0em;
+        right: 0em;
+        z-index: 10;
+        margin: 0em;
+        width: 30px;
+        height: 30px;
+        padding: 0em;
+        text-align: center;
+        -webkit-transition: color 0.2s ease;
+        -moz-transition: color 0.2s ease;
+        transition: color 0.2s ease;
+    }
+
+        .required-field-block .required-icon:after {
+            position: absolute;
+            content: "";
+            right: 1px;
+            top: 1px;
+            z-index: -1;
+            width: 0em;
+            height: 0em;
+            border-top: 0em solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 30px solid transparent;
+            border-left: 0em solid transparent;
+            border-right-color: inherit;
+            -webkit-transition: border-color 0.2s ease;
+            -moz-transition: border-color 0.2s ease;
+            transition: border-color 0.2s ease;
+        }
+
+        .required-field-block .required-icon .text {
+            color: #B80000;
+            font-size: 26px;
+            margin: -3px 0 0 12px;
+        }
+/* Required field END */
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.text-right {
+    text-align: right;
+}

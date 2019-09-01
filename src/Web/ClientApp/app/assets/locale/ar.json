@@ -1,0 +1,466 @@
+﻿{
+    "mainMenu": {
+        "ar-JO": "عربي",
+        "en-US": "English",
+        "Logout": "الخروج",
+        "welcome": "مرحبا"
+    },
+    "footer": "جميع الحقوق محفوظة, © i2be",
+    "login": {
+        "header": "دخول",
+        "email": {
+            "label": "البريد الالكتروني",
+            "hint": "ادخل بريدك الالكتروني",
+            "validation": {
+                "required": {
+                    "title": "البريد الالكتروني مطلوب",
+                    "message": "الرجاء ادخال بريد الكتروني صحيح"
+                },
+                "pattern": {
+                    "title": "بريد الكتروني غير صحيح",
+                    "message": "الرجاء ادخال بريد الكتروني صحيح a@b.com"
+                }
+            }
+        },
+        "password": {
+            "label": "كلمة المرور",
+            "hint": "ادخل كلمة المرور",
+            "validation": {
+                "required": {
+                    "title": "كلمة المرور مطلوب",
+                    "message": "الرجاء ادخال كلمة مرور صحيحة"
+                }
+            }
+        },
+        "rememberMe": "تذكرني",
+        "login": "دخول",
+        "loginIn": "جاري الدخول...",
+        "signUp": "تسجيل حساب",
+        "signUpHint": "ليس لديك حساب؟"
+    },
+    "signUp": {
+        "header": "تسجيل عضو جديد",
+        "firstName": {
+            "label": "الاسم الأول",
+            "hint": "ادخل الاسم الأول",
+            "validation": {
+                "required": {
+                    "title": "الأسم الأول مطلوب",
+                    "message": "الرجاء ادخال الاسم ألاول"
+                }
+            }
+        },
+        "lastName": {
+            "label": "الاسم الأخير",
+            "hint": "ادخل الاسم الأخير",
+            "validation": {
+                "required": {
+                    "title": "الأسم الأخير مطلوب",
+                    "message": "الرجاء ادخال الاسم الأخير"
+                }
+            }
+        },
+        "mobile": {
+            "label": "الهاتف المتحرك",
+            "hint": "ادخل الهاتف المتحرك",
+            "validation": {
+                "required": {
+                    "title": "الهاتف المتحرك مطلوب",
+                    "message": "الرجاء ادخال الهاتف المتحرك"
+                },
+                "pattern": {
+                    "title": "رقم هاتف متحرك غير صحيح",
+                    "message": "الرجاء ادخال رقم هاتف متحرك صحيح +1234567890123"
+                }
+            }
+        },
+        "email": {
+            "label": "البريد الإلكتروني",
+            "hint": "ادخل البريد الإلكتروني",
+            "validation": {
+                "required": {
+                    "title": "البريد الإلكتروني مطلوب",
+                    "message": "الرجاء ادخال البريد الإلكتروني"
+                },
+                "pattern": {
+                    "title": "بريد الكتروني غير صحيح",
+                    "message": "الرجاء ادخال بريد الكتروني صحيح a@b.com"
+                }
+            }
+        },
+        "password": {
+            "label": "كلمة المرور",
+            "hint": "ادخل كلمة المرور",
+            "validation": {
+                "required": {
+                    "title": "كلمة المرور مطلوب",
+                    "message": "الرجاء ادخال كلمة المرور"
+                },
+                "pattern": {
+                    "title": "Stromg password required",
+                    "message": "Password should have 1 UpperCase, 1 LowerCase, 1 number Number or SpecialChar and min 8 Chars"
+                }
+            }
+        },
+        "confirmPassword": {
+            "label": "اعادة كلمة المرور",
+            "hint": "ادخل اعادة كلمة المرور",
+            "validation": {
+                "required": {
+                    "title": "اعادة كلمة المرور مطلوب",
+                    "message": "الرجاء ادخال اعادة كلمة المرور"
+                },
+                "mismatch": {
+                    "title": "كلمة مرور غير متشابهة",
+                    "message": "كلمة المرور واعادة كلمة المرور مختلفتين"
+                }
+            }
+        },
+        "signUp": "تسجيل",
+        "signingUp": "جاري التسجيل...",
+        "cancel": "إلغاء",
+        "messages": {
+            "sucess": {
+                "title": "تسجيل ناجح",
+                "message": "تم تسجيل حساب للبلريد الالكتروني {{email}} بنجاح"
+            },
+            "failed": {
+                "title": "تسجيل فاشل",
+                "message": "The below errors occured whilst saving your changes:<br>{{errorMsg}}"
+            }
+        }
+    },
+    "home": {
+        "header": "Family Directory",
+        "search": {
+            "hint": "Search for Family Members"
+        },
+        "familyMembers": {
+            "familyId": "Fam.Id",
+            "generation": "Gen.",
+            "fullName": "hds",
+            "gender": {
+                "label": "Gender",
+                "male": "Male",
+                "female": "Female"
+            },
+            "sequence": "Seq.",
+            "mobile": "Mobile",
+            "email": "Email"
+        },
+        "filters": {
+            "none": "N/A",
+            "country": "Country",
+            "gender": "Gender"
+        },
+        "viewProfile": "View Family Member \"{{fullName}}\""
+    },
+    "settings": {
+        "header": "Settings",
+        "tabs": {
+            "userInfo": {
+                "title": "User Info",
+                "header": "User Information"
+            },
+            "profile": {
+                "title": "Profile",
+                "header": "Profile Details"
+            },
+            "users": {
+                "title": "Users",
+                "header": "Users Managements"
+            },
+            "roles": {
+                "title": "Roles",
+                "header": "Roles Management"
+            }
+        }
+    },
+    "profileControl": {
+        "tabs": {
+            "basicInfo_ar": {
+                "title": "Basic Information (Arabic)",
+                "familyId": {
+                    "label": "Family Id:",
+                    "hint": "Provide your family Id (Position in the family tree):"
+                },
+                "firstName_ar": {
+                    "label": "First Name:",
+                    "hint": "Provide your first name in Arabic",
+                    "validations": {
+                        "required": {
+                            "title": "First Name (Arabic) required",
+                            "message": "First Name in Arabic is a required field"
+                        }
+                    }
+                },
+                "fatherName_ar": {
+                    "label": "Father Name:",
+                    "hint": "Provide your father name in Arabic",
+                    "validations": {
+                        "required": {
+                            "title": "Father Name (Arabic) required",
+                            "message": "Father Name in Arabic is a required field"
+                        }
+                    }
+                },
+                "motherFirstName_ar": {
+                    "label": "Mother First Name:",
+                    "hint": "Provide your mother first name (Arabic)",
+                    "validations": {
+                        "required": {
+                            "title": "Mother First Name (Arabic) required",
+                            "message": "Mother First Name in Arabic is a required field"
+                        }
+                    }
+                },
+                "motherLastName_ar": {
+                    "label": "Mother Last Name:",
+                    "hint": "Provide your mother last name in Arabic",
+                    "validations": {
+                        "required": {
+                            "title": "Mother Last Name (Arabic) required",
+                            "message": "Mother Last Name in Arabic is a required field"
+                        }
+                    }
+                },
+                "spouseFirstName_ar": {
+                    "label": "Spouse First Name:",
+                    "hint": "Provide your spouse first name in Arabic",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse First Name (Arabic) required",
+                            "message": "Spouse First Name in Arabic is a required field"
+                        }
+                    }
+                },
+                "spouseLastName_ar": {
+                    "label": "Spouse Last Name:",
+                    "hint": "Provide your spouse last name in Arabic",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse Last Name (Arabic) required",
+                            "message": "Spouse Last Name in Arabic is a required field"
+                        }
+                    }
+                }
+            },
+            "basicInfo_en": {
+                "title": "Basic Information (English)",
+                "firstName_en": {
+                    "label": "First Name:",
+                    "hint": "Provide your first name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "First Name (Latin) required",
+                            "message": "First Name in Latin is a required field"
+                        }
+                    }
+                },
+                "fatherName_en": {
+                    "label": "Father Name:",
+                    "hint": "Provide your father name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "Father Name (Latin) required",
+                            "message": "Father Name in Latin is a required field"
+                        }
+                    }
+                },
+                "familyName_en": {
+                    "label": "Family Name:",
+                    "hint": "Provide family name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "Family Name (Latin) required",
+                            "message": "Family Name in Latin is a required field"
+                        }
+                    }
+                },
+                "motherFirstName_en": {
+                    "label": "Mother First Name:",
+                    "hint": "Provide your mother first name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "Mother First Name (Latin) required",
+                            "message": "Mother First Name in Latin is a required field"
+                        }
+                    }
+                },
+                "motherLastName_en": {
+                    "label": "Mother Last Name:",
+                    "hint": "Provide your mother last name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "Mother Last Name (Latin) required",
+                            "message": "Mother Last Name in Latin is a required field"
+                        }
+                    }
+                },
+                "spouseFirstName_en": {
+                    "label": "Spouse First Name:",
+                    "hint": "Provide your spouse first name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse First Name (Latin) required",
+                            "message": "Spouse First Name in Latin is a required field"
+                        }
+                    }
+                },
+                "spouseLastName_en": {
+                    "label": "Spouse Last Name:",
+                    "hint": "Provide your spouse last name in Latin",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse Last Name (Latin) required",
+                            "message": "Spouse Last Name in Latin is a required field"
+                        }
+                    }
+                }
+            },
+            "contactInfo": {
+                "title": "Contact Information",
+                "country": {
+                    "label": "Country:"
+                },
+                "city": {
+                    "label": "City:"
+                },
+                "province": {
+                    "label": "Province:"
+                },
+                "displayEmail": {
+                    "label": "Display Email:"
+                },
+                "displayPhone": {
+                    "label": "Display Phone:"
+                },
+                "displayPhoneType": {
+                    "label": "Display Phone Type:",
+                    "options": {
+                        "mobile": "Mobile",
+                        "business": "Business",
+                        "home": "Home"
+                    }
+                }
+            },
+            "miscellaneous": {
+                "title": "Miscellaneous",
+                "gender": {
+                    "label": "Gender:",
+                    "options": {
+                        "male": "Male",
+                        "female": "Female"
+                    }
+                },
+                "facebook": {
+                    "label": "Facebook:"
+                },
+                "linkedIn": {
+                    "label": "LinkedIn:"
+                },
+                "website": {
+                    "label": "Website:"
+                },
+                "birthYear": {
+                    "label": "Birth Year:"
+                },
+                "maritalStatus": {
+                    "label": "Marital Status",
+                    "options": {
+                        "none": "None",
+                        "married": "Married",
+                        "notMarried": "Not Married"
+                    }
+                },
+                "deathYear": {
+                    "label": "Death Year:"
+                },
+                "horoscope": {
+                    "label": "Horoscope:"
+                }
+            }
+        },
+        "close": "Close",
+        "edit": "Edit",
+        "cancel": "Cancel",
+        "Save": "Save",
+        "Saving": "Saving..."
+    },
+    "userInfoControl": {
+        "fullName": "الاسم الكامل",
+        "email": "البريد الالكتروني",
+        "mobile": "الهاتف المتحرك",
+        "roles": "الأدوار"
+    },
+    "usersControl": {
+        "search": {
+            "hint": "البحث عن المستخدم..."
+        },
+        "newUser": {
+            "label": "مستخدم جديد"
+        },
+        "table": {
+            "fullName": "الاسم الكامل",
+            "email": "البريد الالكتروني",
+            "roles": "الأدوار",
+            "mobile": "الهاتف المتحرك",
+            "status": "الحالة",
+            "activate": "تنشيط",
+            "deactivate": "ايقاف",
+            "edit": "تعديل",
+            "delete": "حذف",
+            "messages": {
+                "deactivateConfirmation": "Are you sure you want to deactivate {{email}} ?",
+                "activateConfirmation": "Are you sure you want to activate {{email}} ?",
+                "activating": "Activating...",
+                "deactivating": "Deactivating...",
+                "deactivateFailed": {
+                    "title": "Error deactivating",
+                    "message": "An error occured whilst deactivating the user.\\r\\nError: {{error}}"
+                },
+                "activateFailed": {
+                    "title": "Error activating",
+                    "message": "An error occured whilst activating the user.\\r\\nError: {{error}}"
+                }
+            }
+        },
+        "currentPassword": "كلمة المرور الحالية:",
+        "currentPasswordRequired": "كلمة المرور الحالية مطلوبة",
+        "newPassword": "كلمة مرور جديدة:",
+        "confirmPassword": "تأكيد كلمة المرور:",
+        "confirmationPasswordRequired": "مطلوب كلمة مرور التأكيد",
+        "passwordMismatch": "لا تتطابق كلمة المرور الجديدة وكلمة مرور التأكيد"
+    },
+    "notFound": {
+        "header": "الصفحة غير موجودة",
+        "404": "404",
+        "pageNotFound": "الصفحة التي تبحث عنها غير موجودة",
+        "backToHome": "العودة إلى لوحة الإستقبال"
+    },
+    "roles": {
+        "management": {
+            "Search": "البحث عن دور...",
+            "NewRole": "دور جديد",
+            "Edit": "تصحيح",
+            "Details": "تفاصيل",
+            "Delete": "حذف",
+            "RoleDetails": "تفاصيل الدور",
+            "EditRole": "  تحرير الدور\"{{name}}\"",
+            "Name": "اسم",
+            "Description": "وصف",
+            "Users": "المستخدمين"
+        },
+        "editor": {
+            "Name": "اسم:",
+            "Description": "وصف:",
+            "RoleNameRequired": "(اسم الدور مطلوب (بحد أدنى 2 و 200 حرف كحد أقصى",
+            "SelectAll": "اختر الكل",
+            "SelectNone": "لا تختر شيء",
+            "Close": "إغلاق",
+            "Cancel": "إلغاء",
+            "Save": "حفظ",
+            "Saving": "جار الحفظ..."
+        }
+    }
+}

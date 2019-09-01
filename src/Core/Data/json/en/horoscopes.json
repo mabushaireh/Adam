@@ -1,0 +1,50 @@
+[
+    {
+        "Item1": "1",
+        "Item2": "Aries"
+    },
+    {
+        "Item1": "2",
+        "Item2": "Taurus"
+    },
+    {
+        "Item1": "3",
+        "Item2": "Gemini"
+    },
+    {
+        "Item1": "4",
+        "Item2": "Cancer"
+    },
+    {
+        "Item1": "5",
+        "Item2": "Leo"
+    },
+    {
+        "Item1": "6",
+        "Item2": "Virgo"
+    },
+    {
+        "Item1": "7",
+        "Item2": "Libra"
+    },
+    {
+        "Item1": "8",
+        "Item2": "Scorpio"
+    },
+    {
+        "Item1": "9",
+        "Item2": "Sagittarius"
+    },
+    {
+        "Item1": "10",
+        "Item2": "Capricorn"
+    },
+    {
+        "Item1": "11",
+        "Item2": "Aquarius"
+    },
+    {
+        "Item1": "12",
+        "Item2": "Pisces"
+    }
+]

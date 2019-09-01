@@ -1,0 +1,307 @@
+<div class="container">
+    <header class="pageHeader">
+        <h3>
+            <i class="fa fa-address-book fa-lg page-caption" aria-hidden="true"></i> {{'home.header' | translate}}</h3>
+    </header>
+
+    <div [@fadeInOut]>
+        <!-- Filters -->
+        <div class="col-md-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div id="accordion" class="panel panel-primary beh7click-panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Search Filter</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-heading ">
+                                    <button type="button" (click)="reset()" class="btn btn-default">
+                                            <i class='fa fa-close'></i> {{'home.filters.reset' | translate}}</button>
+                            </div>
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse0">
+                                        <i class="indicator fa fa-caret-down" aria-hidden="true"></i> {{'home.filters.status.label' | translate}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse0" class="panel-collapse collapse">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="1" (click)="handleFilterBy($event, 'status')" > {{'home.filters.status.options.passedAway' | translate}}
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="0" (click)="handleFilterBy($event, 'status')"> {{'home.filters.status.options.alive' | translate}}
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse1">
+                                        <i class="indicator fa fa-caret-down" aria-hidden="true"></i> {{'home.filters.spouseStatus.label' | translate}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="1" (click)="handleFilterBy($event, 'spouseStatus')"> {{'home.filters.spouseStatus.options.passedAway' | translate}}
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="0" (click)="handleFilterBy($event, 'spouseStatus')"> {{'home.filters.spouseStatus.options.alive' | translate}}
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse2">
+                                        <i class="indicator fa fa-caret-down" aria-hidden="true"></i> {{'home.filters.country' | translate}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <ul class="list-group">
+                                    <li *ngFor="let country of countries" class="list-group-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="{{country}}" (click)="handleFilterBy($event, 'country')"> {{getCountryByLocaleId(country)}}
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse3">
+                                        <i class="indicator fa fa-caret-down" aria-hidden="true"></i> {{'home.filters.gender' | translate}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <ul class="list-group">
+                                    <li *ngFor="let gen of genders" class="list-group-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="{{gen}}" (click)="handleFilterBy($event, 'gender')"> {{(gen == gender.Male? 'home.familyMembers.gender.male' : 'home.familyMembers.gender.female')
+                                                | translate}}
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <search-box (searchChange)="onSearchChanged($event)" placeholder="{{'home.search.hint' | translate}}">></search-box>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-4">
+                    <div class="navbar action-box">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="toolbaritem">
+                                <a href="javascript:;" (click)="switchView()">
+                                    <i [class.fa-sitemap]="!isTree" [class.fa-table]="isTree" class="fa" aria-hidden="true"></i> {{ (isTree? 'home.switchToTableView' :'home.switchToTreeView') | translate}}</a> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>-->
+            </div>
+            <div id="people" #myTree *ngIf="isTree"></div>
+
+            <ngx-datatable *ngIf="!isTree" #myTable class="material colored-header table table-striped table-hover expandable" [loadingIndicator]="loadingIndicator"
+                [rows]="rows" [rowHeight]="35" [headerHeight]="45" [footerHeight]="35" [scrollbarV]="true" [scrollbarH]="false"
+                [columnMode]="'force'" [limit]="10">
+
+                <!-- Row Detail Template -->
+                <ngx-datatable-row-detail [rowHeight]="120" #myDetailRow (toggle)="onDetailToggle($event)">
+                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                        <div style="padding-left: 5px;">
+                            <div class="col-md-3">
+                                <i *ngIf="row.gender == this.gender.Female  && !row.passedAway" style="color:pink" class="fa fa-female fa-fw" aria-hidden="true"></i>
+                                <i *ngIf="row.gender == this.gender.Male  && !row.passedAway" style="color:lightblue" class="fa fa-male fa-fw" aria-hidden="true"></i>
+                                <i *ngIf="row.gender == this.gender.Female  && row.passedAway" style="color:black" class="fa fa-female fa-fw" aria-hidden="true"></i>
+                                <i *ngIf="row.gender == this.gender.Male  && row.passedAway" style="color:black" class="fa fa-male fa-fw" aria-hidden="true"></i>
+                                <i *ngIf="row.maritalStatus == this.maritalStatus.Married && row.gender == this.gender.Male && row.passedAway && !row.spousePassedAway"
+                                    style="color:pink" class="fa fa-heartbeat fa-2" aria-hidden="true"></i>
+                                <i *ngIf="row.maritalStatus == this.maritalStatus.Married && row.gender == this.gender.Female && row.passedAway && !row.spousePassedAway"
+                                    style="color:lightblue" class="fa fa-heartbeat fa-2" aria-hidden="true"></i>
+                            </div>
+                            <div *ngIf="row.displayPhone" class="col-md-3">
+                                <i *ngIf="row.displayPhoneType == this.phoneType.Mobile" class="fa fa-mobile fa-fw" aria-hidden="true"></i>
+                                <i *ngIf="row.displayPhoneType == this.phoneType.Business" class="fa fa-building fa-fw" aria-hidden="true"></i>
+                                <i *ngIf="row.displayPhoneType == this.phoneType.Home" class="fa fa-home fa-fw" aria-hidden="true"></i>
+                                : {{row.displayPhone}}
+                            </div>
+                            <div *ngIf="row.displayEmail" class="col-md-3">
+                                <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+                                : {{row.displayEmail}}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="btn btn-link" href="javascript:;" (click)="viewProfile(row)">
+                                <i class="fa fa-address-card fa-lg" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.displayEmail)">|</span>
+                            <a *ngIf="isNotEmpty(row.displayEmail)" class="btn btn-link" href="mailto:{{row.displayEmail}}">
+                                <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.displayPhone)">|</span>
+                            <a *ngIf="isNotEmpty(row.displayPhone)" class="btn btn-link" href="tel:{{row.displayPhone}}">
+                                <i class="fa fa-phone fa-lg" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.facebook)">|</span>
+                            <a *ngIf="isNotEmpty(row.facebook)" class="btn btn-link" href="{{row.facebook}}" target="_blank">
+                                <i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.linkedIn)">|</span>
+                            <a *ngIf="isNotEmpty(row.linkedIn)" class="btn btn-link" href="{{row.linkedIn}}" target="_blank">
+                                <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                    </ng-template>
+                </ngx-datatable-row-detail>
+
+
+                <!-- Column Templates -->
+                <ngx-datatable-column [width]="30" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                        <a href="javascript:;" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)" class="desktop-hidden">
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="fullName" [flexGrow]="3" [minWidth]="200">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        {{'home.familyMembers.fullName' | translate}}
+                    </ng-template>
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong style="font-size: small">{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="generation" [width]="45" [resizeable]="false" [sortable]="true" [draggable]="false" [canAutoResize]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        <span class="mobile-hidden">{{'home.familyMembers.generation' | translate}}</span>
+                    </ng-template>
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <span class="mobile-hidden">{{value}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="sequence" [width]="40" [resizeable]="false" [sortable]="true" [draggable]="false" [canAutoResize]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        <span class="mobile-hidden">{{'home.familyMembers.sequence' | translate}}</span>
+                    </ng-template>
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <span class="mobile-hidden">{{value}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="gender" [width]="100" [resizeable]="false" [sortable]="true" [draggable]="false" [canAutoResize]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        <span class="mobile-hidden">{{'home.familyMembers.gender.label' | translate}}</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        <span class="mobile-hidden">
+                            <i *ngIf="value == this.gender.Female && !row.passedAway" style="color:pink" class="fa fa-female fa-2" aria-hidden="true"></i>
+                            <i *ngIf="value == this.gender.Female && row.passedAway" style="color:black" class="fa fa-female fa-2" aria-hidden="true"></i>
+                            <i *ngIf="value == this.gender.Male  && !row.passedAway" style="color:lightblue" class="fa fa-male" aria-hidden="true"></i>
+                            <i *ngIf="value == this.gender.Male  && row.passedAway" style="color:black" class="fa fa-male" aria-hidden="true"></i>
+                            <i *ngIf="row.maritalStatus == this.maritalStatus.Married && row.gender == this.gender.Male && row.passedAway && !row.spousePassedAway"
+                                style="color:pink" class="fa fa-heartbeat fa-2" aria-hidden="true"></i>
+                            <i *ngIf="row.maritalStatus == this.maritalStatus.Married && row.gender == this.gender.Female && row.passedAway && !row.spousePassedAway"
+                                style="color:lightblue" class="fa fa-heartbeat fa-2" aria-hidden="true"></i>
+                            {{(value == this.gender.Male ? 'home.familyMembers.gender.male' : 'home.familyMembers.gender.female') | translate}}
+                        </span>
+                    </ng-template>
+                </ngx-datatable-column>
+                <!-- <ngx-datatable-column prop="displayPhone" [width]="105" [resizeable]="true" [sortable]="true" [draggable]="true" [canAutoResize]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        <span class="mobile-hidden">{{'home.familyMembers.phone' | translate}}</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        <span class="mobile-hidden">{{value}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="displayEmail" [flexGrow]="1">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        <span class="mobile-hidden">{{'home.familyMembers.email' | translate}}</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        <span class="mobile-hidden">{{value}}</span>
+                    </ng-template>
+                </ngx-datatable-column> -->
+                <ngx-datatable-column [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false" [width]="170">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        <span class="mobile-hidden">{{column.name}}</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                        <span class="mobile-hidden">
+                            <a class="btn btn-link btn-xs" href="javascript:;" (click)="viewProfile(row)">
+                                <i class="fa fa-address-card" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.displayEmail)">|</span>
+                            <a *ngIf="isNotEmpty(row.displayEmail)" class="btn btn-link btn-xs" href="mailto:{{row.displayEmail}}">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.displayPhone)">|</span>
+                            <a *ngIf="isNotEmpty(row.displayPhone)" class="btn btn-link btn-xs" href="tel:{{row.displayPhone}}">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.facebook)">|</span>
+                            <a *ngIf="isNotEmpty(row.facebook)" class="btn btn-link btn-xs" href="{{row.facebook}}" target="_blank">
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                            </a>
+                            <span *ngIf="isNotEmpty(row.linkedIn)">|</span>
+                            <a *ngIf="isNotEmpty(row.linkedIn)" class="btn btn-link btn-xs" href="{{row.linkedIn}}" target="_blank">
+                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+
+        </div>
+    </div>
+    <div class="modal fade" bsModal #editorModal="bs-modal" (onHidden)="onEditorModalHidden()" [config]="{backdrop: 'static'}"
+        tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">
+                        <i class="fa fa-address-card"></i> {{editingFamilyMember ? ('home.viewProfile' | translate:editingFamilyMember) : ('users.management.NewUser'
+                        | translate)}}</h4>
+                    <button type="button" class="close pull-right" title="Close" (click)="editorModal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <profile #profileEditor [isGeneralEditor]="false"></profile>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

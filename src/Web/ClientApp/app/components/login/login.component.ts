@@ -1,0 +1,183 @@
+﻿// ======================================
+// Author: Mahmood Abushaireh
+// Email:  mabushaireh@outlook.com
+// Copyright (c) 2017 www.i2be.com
+// 
+
+// ======================================
+
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
+import { Router } from '@angular/router';
+
+
+import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
+import { AuthService } from "../../services/auth.service";
+import { ConfigurationService } from '../../services/configuration.service';
+import { AppTranslationService } from '../../services/app-translation.service';
+import { Utilities } from '../../services/utilities';
+import { UserLogin } from '../../models/user-login.model';
+
+@Component({
+    selector: "app-login",
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
+})
+
+export class LoginComponent implements OnInit, OnDestroy {
+
+    userLogin = new UserLogin();
+    isLoading = false;
+    formResetToggle = true;
+    modalClosedCallback: () => void;
+    loginStatusSubscription: any;
+
+    @Input()
+    isModal = false;
+
+
+    constructor(private alertService: AlertService, 
+                private authService: AuthService,
+                private configurations: ConfigurationService,
+                private tranlsationService: AppTranslationService,
+                private router: Router) {
+
+    }
+
+
+    ngOnInit() {
+
+        this.userLogin.rememberMe = this.authService.rememberMe;
+
+        if (this.getShouldRedirect()) {
+            this.authService.redirectLoginUser();
+        }
+        else {
+            this.loginStatusSubscription = this.authService.getLoginStatusEvent().subscribe(isLoggedIn => {
+                if (this.getShouldRedirect()) {
+                    this.authService.redirectLoginUser();
+                }
+            });
+        }
+    }
+
+
+    ngOnDestroy() {
+        if (this.loginStatusSubscription)
+            this.loginStatusSubscription.unsubscribe();
+    }
+
+
+    getShouldRedirect() {
+        return !this.isModal && this.authService.isLoggedIn && !this.authService.isSessionExpired;
+    }
+
+
+    showErrorAlert(caption: string, message: string) {
+        this.alertService.showMessage(caption, message, MessageSeverity.error);
+    }
+
+    closeModal() {
+        if (this.modalClosedCallback) {
+            this.modalClosedCallback();
+        }
+    }
+
+
+    login() {
+        this.isLoading = true;
+        this.alertService.startLoadingMessage("", "Attempting login...");
+
+        this.authService.login(this.userLogin.email, this.userLogin.password, this.userLogin.rememberMe)
+            .subscribe(
+            user => {
+                setTimeout(() => {
+                    this.alertService.stopLoadingMessage();
+                    this.isLoading = false;
+                    this.reset();
+
+                    if (!this.isModal) {
+                        this.alertService.showMessage("Login", `Welcome ${user.email}!`, MessageSeverity.success);
+                    }
+                    else {
+                        this.alertService.showMessage("Login", `Session for ${user.email} restored!`, MessageSeverity.success);
+                        setTimeout(() => {
+                            this.alertService.showStickyMessage("Session Restored", "Please try your last operation again", MessageSeverity.default);
+                        }, 500);
+
+                        this.closeModal();
+                    }
+                }, 500);
+            },
+            error => {
+
+                this.alertService.stopLoadingMessage();
+
+                if (Utilities.checkNoNetwork(error)) {
+                    this.alertService.showStickyMessage(Utilities.noNetworkMessageCaption, Utilities.noNetworkMessageDetail, MessageSeverity.error, error);
+                    //this.offerAlternateHost();
+                }
+                else {
+                    let errorMessage = Utilities.findHttpResponseMessage("error_description", error);
+
+                    if (errorMessage)
+                        this.alertService.showStickyMessage("Unable to login", errorMessage, MessageSeverity.error, error);
+                    else
+                        this.alertService.showStickyMessage("Unable to login", "An error occured whilst logging in, please try again later.\nError: " + error.statusText || error.status, MessageSeverity.error, error);
+                }
+
+                setTimeout(() => {
+                    this.isLoading = false;
+                }, 500);
+            });
+    }
+
+
+    //offerAlternateHost() {
+
+    //    if (Utilities.checkIsLocalHost(location.origin) && Utilities.checkIsLocalHost(this.configurations.baseUrl)) {
+    //        this.alertService.showDialog("Dear Developer!\nIt appears your backend Web API service is not running...\n" +
+    //            "Would you want to temporarily switch to the online Demo API below?(Or specify another)",
+    //            DialogType.prompt,
+    //            (value: string) => {
+    //                this.configurations.baseUrl = value;
+    //                this.alertService.showStickyMessage("API Changed!", "The target Web API has been changed to: " + value, MessageSeverity.warn);
+    //            },
+    //            null,
+    //            null,
+    //            null,
+    //            this.configurations.fallbackBaseUrl);
+    //    }
+    //}
+
+
+    reset() {
+        this.formResetToggle = false;
+
+        setTimeout(() => {
+            this.formResetToggle = true;
+        });
+    }
+
+    signUp() {
+        this.router.navigate(['/signup']);
+    }
+
+    get email_validatation_required_title(): string {
+        return this.tranlsationService.getTranslation('login.email.validation.required.title');
+    }
+    get email_validatation_required_message(): string {
+        return this.tranlsationService.getTranslation('login.email.validation.required.message');
+    }
+    get email_validatation_pattern_title(): string {
+        return this.tranlsationService.getTranslation('login.email.validation.pattern.title');
+    }
+    get email_validatation_pattern_message(): string {
+        return this.tranlsationService.getTranslation('login.email.validation.pattern.message');
+    }
+    get password_validatation_required_title(): string {
+        return this.tranlsationService.getTranslation('login.password.validation.required.title');
+    }
+    get password_validatation_required_message(): string {
+        return this.tranlsationService.getTranslation('login.password.validation.required.message');
+    }
+}

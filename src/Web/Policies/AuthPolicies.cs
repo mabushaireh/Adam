@@ -1,0 +1,39 @@
+﻿// ======================================
+// Author: Mahmood Abushaireh
+// Email:  mabushaireh@outlook.com
+// Copyright (c) 2017 www.i2be.com
+// 
+//TODO: add description
+// ======================================
+
+namespace i2fam.Web.Policies
+{
+    public class AuthPolicies
+    {
+        ///<summary>Policy to allow viewing the current user or another user's records (Requires target userId as parameter).</summary>
+        public const string ViewMemberByMemberIdPolicy = "View Member by ID";
+
+        ///<summary>Policy to allow viewing all user records.</summary>
+        public const string ViewMembersPolicy = "View Members";
+
+        ///<summary>Policy to allow updating the current user or managing other user records (Requires target userId as parameter).</summary>
+        public const string ManageMemberByMemberIdPolicy = "Manage Member by ID";
+
+        ///<summary>Policy to allow adding, removing and updating other user records.</summary>
+        public const string ManageMembersPolicy = "Manage Members";
+
+        /// <summary>Policy to allow viewing details of the current user's role or other roles (Requires roleName as parameter).</summary>
+        public const string ViewRoleByRoleNamePolicy = "View Role by RoleName";
+
+        /// <summary>Policy to allow viewing details of all roles.</summary>
+        public const string ViewRolesPolicy = "View Roles";
+
+        /// <summary>Policy to allow assigning roles.</summary>
+        public const string AssignRolesPolicy = "Assign Roles";
+
+        /// <summary>Policy to allow adding, removing and updating roles.</summary>
+        public const string ManageRolesPolicy = "Manage Roles";
+
+        ///<summary>Policy to allow viewing all templates records.</summary>
+    }
+}

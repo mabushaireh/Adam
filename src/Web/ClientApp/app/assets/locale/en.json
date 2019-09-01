@@ -1,0 +1,630 @@
+﻿{
+    "mainMenu": {
+        "en-US": "English",
+        "ar-JO": "عربي",
+        "logout": "Logout",
+        "welcome": "Welcome"
+    },
+    "footer": "Adam v1.0 Copyrights © 2017 i2be Incorporated",
+    "login": {
+        "header": "Login",
+        "email": {
+            "label": "Email",
+            "hint": "Enter a your email",
+            "validation": {
+                "required": {
+                    "title": "Email is required",
+                    "message": "Please enter a valid email"
+                },
+                "pattern": {
+                    "title": "Invalid email format",
+                    "message": "Please enter a valid email format a@b.com"
+                }
+            }
+        },
+        "password": {
+            "label": "Password",
+            "hint": "Enter a your password",
+            "validation": {
+                "required": {
+                    "title": "Password is required",
+                    "message": "Please enter a valid password"
+                }
+            }
+        },
+        "rememberMe": "Remeber Me",
+        "login": "Login",
+        "loginIn": "Login In...",
+        "signUp": "Sign Up",
+        "signUpHint": "Dont have an account?"
+    },
+    "signUp": {
+        "header": "Sign Up",
+        "firstName": {
+            "label": "First Name",
+            "hint": "Enter First name",
+            "validation": {
+                "required": {
+                    "title": "First name is required",
+                    "message": "Please enter your first name"
+                }
+            }
+        },
+        "lastName": {
+            "label": "Last Name",
+            "hint": "Enter last Name",
+            "validation": {
+                "required": {
+                    "title": "Last name is required",
+                    "message": "Please enter your last name"
+                }
+            }
+        },
+        "mobile": {
+            "label": "Mobile",
+            "hint": "Enter mobile",
+            "validation": {
+                "required": {
+                    "title": "Mobile is required",
+                    "message": "Please enter your mobile"
+                },
+                "pattern": {
+                    "title": "Invalid mobile format",
+                    "message": "Please enter a valid mobile format +1234567890123"
+                }
+            }
+        },
+        "email": {
+            "label": "Email",
+            "hint": "Enter email",
+            "validation": {
+                "required": {
+                    "title": "Email is required",
+                    "message": "Please enter your email"
+                },
+                "pattern": {
+                    "title": "Invalid email format",
+                    "message": "Please enter a valid email format a@b.com"
+                }
+            }
+        },
+        "password": {
+            "label": "Password",
+            "hint": "Enter password",
+            "validation": {
+                "required": {
+                    "title": "Password is required",
+                    "message": "Please enter your password"
+                },
+                "pattern": {
+                    "title": "Stromg password required",
+                    "message": "Password should have 1 UpperCase, 1 LowerCase, 1 number Number or SpecialChar and min 8 Chars"
+                }
+            }
+        },
+        "confirmPassword": {
+            "label": "Confirm Password",
+            "hint": "Enter conform password",
+            "validation": {
+                "required": {
+                    "title": "Confirm password is required",
+                    "message": "Please confirm the password"
+                },
+                "mismatch": {
+                    "title": "Password mismatch",
+                    "message": "Password and confirmation password do not match"
+                }
+            }
+        },
+        "signUp": "Sign Up",
+        "signingUp": "Signing Up...",
+        "cancel": "Cancel",
+        "messages": {
+            "success": {
+                "title": "Success",
+                "message": "User {{email}} was created successfully"
+            },
+            "failed": {
+                "title": "Signup Error",
+                "message": "The below errors occured whilst saving your changes:<br>{{errorMsg}}"
+            }
+        }
+    },
+    "home": {
+        "header": "Family Directory",
+        "switchToTableView": "Table View",
+        "switchToTreeView": "Tree View",
+        "search": {
+            "hint": "Search for Family Members"
+        },
+        "familyMembers": {
+            "familyId": "Fam.Id",
+            "generation": "Gen.",
+            "fullName": "Full Name",
+            "gender": {
+                "label": "Gender",
+                "male": "Male",
+                "female": "Female"
+            },
+            "sequence": "Seq.",
+            "phone": "Phone",
+            "email": "Email"
+        },
+        "filters": {
+            "none": "N/A",
+            "status" : {
+                "label": "Status",
+                "options": {
+                    "passedAway" : "Passed Away",
+                    "alive" : "Alive"
+                }
+            },
+            "spouseStatus" : {
+                "label": "Spouse Status",
+                "options": {
+                    "passedAway" : "Passed Away",
+                    "alive" : "Alive"
+                }
+            },
+            "country": "Country",
+            "gender": "Gender",
+            "reset": "Reset"
+        },
+        "viewProfile": "View Family Member \"{{fullName}}\""
+    },
+    "about": {
+        "header": "About"
+    },
+    "settings": {
+        "header": "Settings",
+        "tabs": {
+            "userInfo": {
+                "title": "User Info",
+                "header": "User Information"
+            },
+            "profile": {
+                "title": "Profile",
+                "header": "Profile Details"
+            },
+            "users": {
+                "title": "Users",
+                "header": "Users Managements"
+            },
+            "roles": {
+                "title": "Roles",
+                "header": "Roles Management"
+            }
+        }
+    },
+    "profileControl": {
+        "tabs": {
+            "basicInfo_ar": {
+                "title": "Basic Information (Arabic)",
+                "familyId": {
+                    "label": "Family Id:",
+                    "hint": "Provide your family Id (Position in the family tree):",
+                    "validations":{
+                        "required" : {
+                            "message" : "Family Id is a required field.",
+                            "title": "Family Id required."
+                        },
+                        "pattern" :{
+                            "title": "Invalid Family Id format.",
+                            "message": "Family Id Format is a number of maximum five (5) digits!"
+                        }
+                    }
+
+                },
+                "generation": {
+                    "label": "Generation:",
+                    "hint": "Provide your generation:",
+                    "validations":{
+                        "required" : {
+                            "message" : "Generation is a required field.",
+                            "title": "Generation is required."
+                        },
+                        "pattern" :{
+                            "title": "Invalid Generation format.",
+                            "message": "Generation is a number from 1-99!"
+                        }
+                    }
+
+                },
+                "sequence": {
+                    "label": "Sequence:",
+                    "hint": "Provide your sequence between your brothers/sisters:",
+                    "validations":{
+                        "required" : {
+                            "message" : "Sequence is a required field.",
+                            "title": "sequence is required."
+                        },
+                        "pattern" :{
+                            "title": "Invalid sequence format.",
+                            "message": "Sequence is a number from 1-99!"
+                        }
+                    }
+
+                },
+                "firstName_ar": {
+                    "label": "First Name:",
+                    "hint": "Provide your first name in Arabic",
+                    "validations": {
+                        "required": {
+                            "title": "First Name (Arabic) required",
+                            "message": "First Name in Arabic is a required field"
+                        }
+                    }
+                },
+                "parent": {
+                    "label": "Father Name:",
+                    "hint": "Select parent from list",
+                    "validations": {
+                        "required": {
+                            "title": "Parent field required",
+                            "message": "Parent is a required field"
+                        }
+                    }
+                },
+                "motherFirstName_ar": {
+                    "label": "Mother First Name:",
+                    "hint": "Provide your mother first name (Arabic)",
+                    "validations": {
+                        "required": {
+                            "title": "Mother First Name (Arabic) required",
+                            "message": "Mother First Name (Arabic) is a required field"
+                        }
+                    }
+                },
+                "motherLastName_ar": {
+                    "label": "Mother Last Name:",
+                    "hint": "Provide your mother last name (Arabic)",
+                    "validations": {
+                        "required": {
+                            "title": "Mother Last Name (Arabic) required",
+                            "message": "Mother Last Name (Arabic) is a required field"
+                        }
+                    }
+                },
+                "spouseFirstName_ar": {
+                    "label": "Spouse First Name:",
+                    "hint": "Provide your spouse first name (Arabic)",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse First Name (Arabic) required",
+                            "message": "Spouse First Name (Arabic) is a required field"
+                        }
+                    }
+                },
+                "spouseLastName_ar": {
+                    "label": "Spouse Last Name:",
+                    "hint": "Provide your spouse last name (Arabic)",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse Last Name (Arabic) required",
+                            "message": "Spouse Last Name (Arabic) is a required field"
+                        }
+                    }
+                }
+            },
+            "basicInfo_en": {
+                "title": "Basic Information (Latin)",
+                "firstName_en": {
+                    "label": "First Name:",
+                    "hint": "Provide your first name (Latin)",
+                    "validations": {
+                        "required": {
+                            "title": "First Name (Latin) required",
+                            "message": "First Name (Latin) is a required field"
+                        }
+                    }
+                },
+                "fatherName_en": {
+                    "label": "Father Name:",
+                    "hint": "Provide your father name (Latin)",
+                    "validations": {
+                        "required": {
+                            "title": "Father Name (Latin) required",
+                            "message": "Father Name (Latin) is a required field"
+                        }
+                    }
+                },
+                "familyName_en": {
+                    "label": "Family Name:",
+                    "hint": "How you spell the family name in your passport",
+                    "validations": {
+                        "required": {
+                            "title": "Family Name (Latin) required",
+                            "message": "Family Name (Latin) is a required field"
+                        }
+                    }
+                },
+                "motherFirstName_en": {
+                    "label": "Mother First Name:",
+                    "hint": "Provide your mother first name (Latin)",
+                    "validations": {
+                        "required": {
+                            "title": "Mother First Name (Latin) required",
+                            "message": "Mother First Name (Latin) is a required field"
+                        }
+                    }
+                },
+                "motherLastName_en": {
+                    "label": "Mother Last Name:",
+                    "hint": "Provide your mother last name (Latin)",
+                    "validations": {
+                        "required": {
+                            "title": "Mother Last Name (Latin) required",
+                            "message": "Mother Last Name (Latin) is a required field"
+                        }
+                    }
+                },
+                "spouseFirstName_en": {
+                    "label": "Spouse First Name:",
+                    "hint": "Provide your spouse first name (Latin)",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse First Name (Latin) required",
+                            "message": "Spouse First Name (Latin) is a required field"
+                        }
+                    }
+                },
+                "spouseLastName_en": {
+                    "label": "Spouse Last Name:",
+                    "hint": "Provide your spouse last name (Latin)",
+                    "validations": {
+                        "required": {
+                            "title": "Spouse Last Name (Latin) required",
+                            "message": "Spouse Last Name (Latin) is a required field"
+                        }
+                    }
+                }
+            },
+            "contactInfo": {
+                "title": "Contact Information",
+                "country": {
+                    "label": "Country:",
+                    "hint": "Select Country of residency from the list."
+                },
+                "city": {
+                    "label": "City:",
+                    "hint": "Provide City of residency."
+                },
+                "province": {
+                    "label": "Province (State):",
+                    "hint": "Please enter full name not abbreviation (e.g. Florida not FL."
+                },
+                "displayEmail": {
+                    "label": "Display Email:",
+                    "hint": "Provide your email address."
+                },
+                "displayPhone": {
+                    "label": "Display Phone:",
+                    "hint": "Provide your phone number."
+                },
+                "displayPhoneType": {
+                    "label": "Display Phone Type:",
+                    "hint": "Select phone Type.",
+                    "options": {
+                        "mobile": "Mobile",
+                        "business": "Business",
+                        "home": "Home"
+                    }
+                },
+                "facebook": {
+                    "label": "Facebook:",
+                    "hint": "Provide the Url to your Facebook Page.",
+                    "validations":{
+                        "pattern": {
+                            "title": "Invalid Facebook Url",
+                            "message": "Please provide a valid Facebook Page Url."
+                        }
+                    }
+                },
+                "linkedIn": {
+                    "label": "LinkedIn:",
+                    "hint": "Provide the Url to your LinkedIn Page.",
+                    "validations":{
+                        "pattern": {
+                            "title": "Invalid LinkedIn Url",
+                            "message": "Please provide a valid LinkedIn Page Url."
+                        }
+                    }
+                },
+                "website": {
+                    "label": "Website:",
+                    "hint": "Provide the Url to your Website, Include http/https.",
+                    "validations":{
+                        "pattern": {
+                            "title": "Invalid Website Url",
+                            "message": "Please provide a valid Website  Url."
+                        }
+                    }
+                }
+            },
+            "otherDependentsAr" : {
+                "title": "Other Dependents (Arabic)",
+                "prvSpouseFirstName_ar": {
+                    "label": "Previous Spouse First Name:",
+                    "hint": "Provide your previous spouse first name (Arabic)"
+                },
+                "prvSpouseLastName_ar": {
+                    "label": "Previous Spouse Last Name:",
+                    "hint": "Provide your previous spouse last name (Arabic)"
+                },
+                "prvPrvSpouseFirstName_ar": {
+                    "label": "Previous Previous Spouse First Name:",
+                    "hint": "Provide your previous previous spouse first name (Arabic)"
+                },
+                "prvPrvSpouseLastName_ar": {
+                    "label": "Previous Previous Spouse Last Name:",
+                    "hint": "Provide your previous previous spouse last name (Arabic)"
+                },
+                "femChildrenList_ar": {
+                    "label": "Children First Names:",
+                    "hint": "Start with eldest and separate by comma space \", \""
+                }
+                
+            },
+            "otherDependentsEn" : {
+                "title": "Other Dependents (Latin)",
+                "prvSpouseFirstName_en": {
+                    "label": "Previous Spouse First Name:",
+                    "hint": "Provide your previous spouse first name (Arabic)"
+                },
+                "prvSpouseLastName_en": {
+                    "label": "Previous Spouse Last Name:",
+                    "hint": "Provide your previous spouse last name (Arabic)"
+                },
+                "prvPrvSpouseFirstName_en": {
+                    "label": "Previous Previous Spouse First Name:",
+                    "hint": "Provide your previous previous spouse first name (Arabic)"
+                },
+                "prvPrvSpouseLastName_en": {
+                    "label": "Previous Previous Spouse Last Name:",
+                    "hint": "Provide your previous previous spouse last name (Arabic)"
+                },
+                "femChildrenList_en": {
+                    "label": "Children First Names:",
+                    "hint": "Start with eldest and separate by comma space \", \""
+                }
+            },
+            "miscellaneous": {
+                "title": "Misc.",
+                "gender": {
+                    "label": "Gender:",
+                    "options": {
+                        "male": "Male",
+                        "female": "Female"
+                    }
+                },
+                "birthYear": {
+                    "label": "Birth Year:",
+                    "hint": "Provide your birth year.",
+                    "validations":{
+                        "pattern": {
+                            "title": "Invalid Birth Year",
+                            "message": "Please provide a valid Birth Year."
+                        }
+                    }
+                },
+                "maritalStatus": {
+                    "label": "Marital Status",
+                    "options": {
+                        "none": "N/A",
+                        "married": "Married",
+                        "notMarried": "Not Married"
+                    }
+                },
+                "passedAway": {
+                    "label": "Passed Away",
+                    "options": {
+                        "yes": "Yes",
+                        "no": "No"
+                    }
+                },
+                "spousePassedAway": {
+                    "label": "Spouse Passed Away",
+                    "options": {
+                        "yes": "Yes",
+                        "no": "No"
+                    }
+                },
+                "deathYear": {
+                    "label": "Death Year:",
+                    "hint": "Provide death year.",
+                    "validations":{
+                        "pattern": {
+                            "title": "Invalid Birth Year",
+                            "message": "Please provide a valid Birth Year."
+                        }
+                    }
+                },
+                "horoscope": {
+                    "label": "Horoscope:",
+                    "hint": "Please select your horosocpe"
+                }
+            }
+        },
+        "close": "Close",
+        "requestUpdate": "Request Update",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving..."
+    },
+    "userInfoControl": {
+        "fullName": "Full Name",
+        "email": "Email",
+        "mobile": "Mobile",
+        "roles": "Roles"
+    },
+    "usersControl": {
+        "search": {
+            "hint": "Search for users..."
+        },
+        "newUser": {
+            "label": "New User"
+        },
+        "table": {
+            "fullName": "Full Name",
+            "email": "Email",
+            "roles": "Roles",
+            "mobile": "Mobile",
+            "status": "Status",
+            "activate": "Activate",
+            "deactivate": "Deactivate",
+            "edit": "edit",
+            "delete": "delete",
+            "messages": {
+                "deactivateConfirmation": "Are you sure you want to deactivate {{email}} ?",
+                "activateConfirmation": "Are you sure you want to activate {{email}} ?",
+                "activating": "Activating...",
+                "deactivating": "Deactivating...",
+                "deactivateFailed": {
+                    "title": "Error deactivating",
+                    "message": "An error occured whilst deactivating the user.\\r\\nError: {{error}}"
+                },
+                "activateFailed": {
+                    "title": "Error activating",
+                    "message": "An error occured whilst activating the user.\\r\\nError: {{error}}"
+                }
+            }
+        },
+        "currentPassword": "Current Password:",
+        "currentPasswordRequired": "Current password is required",
+        "newPassword": "New Password:",
+        "confirmPassword": "Confirm Password:",
+        "confirmationPasswordRequired": "Confirmation password is required",
+        "passwordMismatch": "New password and confirmation password do not match"
+    },
+    "notFound": {
+        "header": "Not-Found",
+        "404": "404",
+        "pageNotFound": "The page you are looking for does not exist",
+        "backToHome": "Back to home"
+    },
+    "roles": {
+        "editor": {
+            "Name": "Name:",
+            "Description": "Description:",
+            "RoleNameRequired": "Role name is required (minimum of 2 and maximum of 200 characters)",
+            "SelectAll": "Select all",
+            "SelectNone": "Select none",
+            "Close": "Close",
+            "Cancel": "Cancel",
+            "Save": "Save",
+            "Saving": "Saving..."
+        },
+        "management": {
+            "Search": "Search for role...",
+            "NewRole": "New Role",
+            "Edit": "Edit",
+            "Details": "Details",
+            "Delete": "Delete",
+            "RoleDetails": "Role Details",
+            "EditRole": "Edit Role \"{{name}}\"",
+            "Name": "Name",
+            "Description": "Description",
+            "Users": "Users"
+        }
+    }
+}

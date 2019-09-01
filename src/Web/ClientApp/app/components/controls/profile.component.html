@@ -1,0 +1,930 @@
+﻿<div>
+    <!-- FIXME: find a way to fix the below warnings -->
+    <form *ngIf="formResetToggle" [attr.autocomplete]="isGeneralEditor ? NaN : null" class="form-horizontal" name="ProfileForm"
+        #f="ngForm" novalidate (ngSubmit)="f.form.valid ? save():
+        (familyId && familyId.errors?.required && showErrorAlert(basicInfo_ar_familyId_validations_required_title, basicInfo_ar_familyId_validations_required_message));
+        (familyId && familyId.errors?.pattern && showErrorAlert(basicInfo_ar_familyId_validations_pattern_title, basicInfo_ar_familyId_validations_pattern_message));
+        (generation && generation.errors?.required && showErrorAlert(basicInfo_ar_generation_validations_required_title, basicInfo_ar_generation_validations_required_message));
+        (generation && generation.errors?.pattern && showErrorAlert(basicInfo_ar_generation_validations_pattern_title, basicInfo_ar_generation_validations_pattern_message));
+        (sequence && sequence.errors?.required && showErrorAlert(basicInfo_ar_sequence_validations_required_title, basicInfo_ar_sequence_validations_required_message));
+        (sequence && sequence.errors?.pattern && showErrorAlert(basicInfo_ar_sequence_validations_pattern_title, basicInfo_ar_sequence_validations_pattern_message));
+        (firstName_Ar && firstName_Ar.errors?.required && showErrorAlert(basicInfo_ar_firstName_ar_validations_required_title, basicInfo_ar_firstName_ar_validations_required_message));
+        (parentId && parentId.errors?.required && showErrorAlert(basicInfo_ar_parent_validations_required_title, basicInfo_ar_parent_validations_required_message));
+        (displayEmail && displayEmail.errors?.pattern && showErrorAlert(contactInfo_displayEmail_validations_pattern_title, contactInfo_displayEmail_validations_pattern_message));
+        (displayPhone && displayPhone.errors?.pattern && showErrorAlert(contactInfo_displayPhone_validations_pattern_title, contactInfo_displayPhone_validations_pattern_message));
+        (displayPhoneType && displayPhoneType.errors?.required && showErrorAlert(contactInfo_displayPhoneType_validations_required_title, contactInfo_displayPhoneType_validations_required_message));
+        (facebook && facebook.errors?.pattern && showErrorAlert(contactInfo_facebook_validations_pattern_title, contactInfo_facebook_validations_pattern_message));
+        (linkedIn && linkedIn.errors?.pattern && showErrorAlert(contactInfo_linkedIn_validations_pattern_title, contactInfo_linkedIn_validations_pattern_message));
+        (website && website.errors?.pattern && showErrorAlert(contactInfos_website_validations_pattern_title, contactInfo_website_validations_pattern_message));
+        (birthYear && birthYear.errors?.pattern && showErrorAlert(miscellaneous_birthYear_validations_pattern_title, miscellaneous_birthYear_validations_pattern_message));
+        (deathYear && deathYear.errors?.pattern && showErrorAlert(miscellaneous_deathYear_validations_pattern_title, miscellaneous_deathYear_validations_pattern_message));
+
+        ">
+        <!--TABS Definition -->
+
+        <div class="col-sm-4 side-menu">
+            <ul bootstrapTab #tab="bootstrap-tab" class="nav nav-tabs tabs-left" (showBSTab)="onShowTab($event)">
+                <li class="active">
+                    <a id="basicInfoArTab" [routerLink]="[]" fragment="basicInfoAr" href="#basicInfoAr" data-toggle="tab">
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i> {{'profileControl.tabs.basicInfo_ar.title' | translate}}</a>
+                </li>
+                <li>
+                    <a id="basicInfoEnTab" [routerLink]="[]" fragment="basicInfoEn" href="#basicInfoEn" data-toggle="tab">
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i> {{'profileControl.tabs.basicInfo_en.title' | translate}}</a>
+                </li>
+                <li>
+                    <a id="contactInfoTab" [routerLink]="[]" fragment="contactInfo" href="#contactInfo" data-toggle="tab">
+                        <i class="fa fa-address-card fa-fw" aria-hidden="true"></i> {{'profileControl.tabs.contactInfo.title' | translate}}</a>
+                </li>
+                <li>
+                    <a id="otherDependentsArTab" [routerLink]="[]" fragment="otherDependentsAr" href="#otherDependentsAr" data-toggle="tab">
+                        <i class="fa fa-address-card fa-fw" aria-hidden="true"></i> {{'profileControl.tabs.otherDependentsAr.title' | translate}}</a>
+                </li>
+                <li>
+                    <a id="otherDependentsEnTab" [routerLink]="[]" fragment="otherDependentsEn" href="#otherDependentsEn" data-toggle="tab">
+                        <i class="fa fa-address-card fa-fw" aria-hidden="true"></i> {{'profileControl.tabs.otherDependentsEn.title' | translate}}</a>
+                </li>
+                <li>
+                    <a id="miscellaneousTab" [routerLink]="[]" fragment="miscellaneous" href="#miscellaneous" data-toggle="tab">
+                        <i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> {{'profileControl.tabs.miscellaneous.title' | translate}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-8">
+            <div class="tab-content">
+                <!-- Basic Info Arabic Tab-->
+                <div class="tab-pane active" id="basicInfoAr">
+                    <div [@fadeInOut] *ngIf="isBasicInfoArActivated" class="content-container">
+                        <!-- FamilyId -->
+                        <!-- 
+                            <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="familyId-{{uniqueId}}">{{'profileControl.tabs.basicInfo_ar.familyId.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.familyId}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && familyId.valid, 'has-error' : f.submitted && !familyId.valid}">
+                                <input autofocus type="number" attr.id="familyId-{{uniqueId}}" name="familyId" placeholder="{{'profileControl.tabs.basicInfo_ar.familyId.hint' | translate}}"
+                                    class="form-control" required [(ngModel)]="profileEdit.familyId" #familyId="ngModel" pattern="[0-9]{1,5}$"
+                                    maxlength="5" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': familyId.valid, 'glyphicon-remove' : !familyId.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && familyId.errors?.required" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.familyId.validations.required.message' | translate}}
+                                </span>
+                                <span *ngIf="showValidationErrors && f.submitted && familyId.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.familyId.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div> 
+                    -->
+                        <!-- Generation -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="generation-{{uniqueId}}">{{'profileControl.tabs.basicInfo_ar.generation.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.generation}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && generation.valid, 'has-error' : f.submitted && !generation.valid}">
+                                <input autofocus type="number" attr.id="generation-{{uniqueId}}" name="generation" placeholder="{{'profileControl.tabs.basicInfo_ar.generation.hint' | translate}}"
+                                    class="form-control" required [(ngModel)]="profileEdit.generation" #generation="ngModel"
+                                    pattern="[0-9]{1,2}$" maxlength="2" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': generation.valid, 'glyphicon-remove' : !generation.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && generation.errors?.required" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.generation.validations.required.message' | translate}}
+                                </span>
+                                <span *ngIf="showValidationErrors && f.submitted && generation.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.generation.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- sequence -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="sequence-{{uniqueId}}">{{'profileControl.tabs.basicInfo_ar.sequence.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.sequence}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && sequence.valid, 'has-error' : f.submitted && !sequence.valid}">
+                                <input autofocus type="number" attr.id="sequence-{{uniqueId}}" name="sequence" placeholder="{{'profileControl.tabs.basicInfo_ar.sequence.hint' | translate}}"
+                                    class="form-control" required [(ngModel)]="profileEdit.sequence" #sequence="ngModel" pattern="[0-9]{1,2}$"
+                                    maxlength="2" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': sequence.valid, 'glyphicon-remove' : !sequence.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && sequence.errors?.required" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.sequence.validations.required.message' | translate}}
+                                </span>
+                                <span *ngIf="showValidationErrors && f.submitted && sequence.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.sequence.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- firstName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="firstName_Ar-{{uniqueId}}">
+                                {{'profileControl.tabs.basicInfo_ar.firstName_ar.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.firstName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && firstName_Ar.valid, 'has-error' : f.submitted && !firstName_Ar.valid}">
+                                <input type="text" attr.id="firstName_Ar-{{uniqueId}}" name="firstName_Ar" placeholder="{{'profileControl.tabs.basicInfo_ar.firstName_ar.hint' | translate}}"
+                                    class="form-control" required [(ngModel)]="profileEdit.firstName_Ar" #firstName_Ar="ngModel"
+                                    maxlength="200" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': firstName_Ar.valid, 'glyphicon-remove' : !firstName_Ar.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && firstName_Ar.errors?.required" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.firstName_ar.validations.required.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+
+                        <!-- parentId -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="parentId-{{uniqueId}}">
+                                {{'profileControl.tabs.basicInfo_ar.parent.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="badge" style="margin-top: 3px;">{{profile.parent?.fullName}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && parentId.valid, 'has-error' : f.submitted && !parentId.valid}">
+                                <select attr.id="parentId-{{uniqueId}}" name="parentId" [(ngModel)]="profileEdit.parentId" #parentId="ngModel" class="selectpicker form-control"
+                                    bootstrapSelect required show-tick data-live-search="true" data-actions-box="false" data-live-search-placeholder="Search..."
+                                    title="{{'profileControl.tabs.basicInfo_ar.fatherName_ar.hint' | translate}}">
+                                    <option *ngFor="let parent of allFamilyMembers" attr.data-content="<span title='{{parent.fullName}}' class='badge'>{{parent.fullName}}</span>"
+                                        attr.value="{{parent.id}}" selected>
+                                        {{parent.fullName}}
+                                    </option>
+                                </select>
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': parentId.valid, 'glyphicon-remove' : !parentId.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && parentId.errors?.required" class="errorMessage">
+                                    {{'profileControl.tabs.basicInfo_ar.parent.validations.required.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- motherFirstName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="motherFirstName_Ar-{{uniqueId}}">
+                                {{'profileControl.tabs.basicInfo_ar.motherFirstName_ar.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.motherFirstName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && motherFirstName_Ar.valid, 'has-error' : f.submitted && !motherFirstName_Ar.valid}">
+                                <input type="text" attr.id="motherFirstName_Ar-{{uniqueId}}" name="motherFirstName_Ar" placeholder="{{'profileControl.tabs.basicInfo_ar.motherFirstName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.motherFirstName_Ar" #motherFirstName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+
+                        <!-- motherLastName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="motherLastName_Ar-{{uniqueId}}">
+                                {{'profileControl.tabs.basicInfo_ar.motherLastName_ar.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.motherLastName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && motherLastName_Ar.valid, 'has-error' : f.submitted && !motherLastName_Ar.valid}">
+                                <input type="text" attr.id="motherLastName_Ar-{{uniqueId}}" name="motherLastName_Ar" placeholder="{{'profileControl.tabs.basicInfo_ar.motherLastName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.motherLastName_Ar" #motherLastName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+
+                        <!-- spouseFirstName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="spouseFirstName_Ar-{{uniqueId}}">{{'profileControl.tabs.basicInfo_ar.spouseFirstName_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.spouseFirstName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && spouseFirstName_Ar.valid, 'has-error' : f.submitted && !spouseFirstName_Ar.valid}">
+                                <input type="text" attr.id="spouseFirstName_Ar-{{uniqueId}}" name="spouseFirstName_Ar" placeholder="{{'profileControl.tabs.basicInfo_ar.spouseFirstName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.spouseFirstName_Ar" #spouseFirstName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- spouseLastName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="spouseLastName_Ar-{{uniqueId}}">{{'profileControl.tabs.basicInfo_ar.spouseLastName_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.spouseLastName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && spouseLastName_Ar.valid, 'has-error' : f.submitted && !spouseLastName_Ar.valid}">
+                                <input type="text" attr.id="spouseFirstName_Ar-{{uniqueId}}" name="spouseLastName_Ar" placeholder="{{'profileControl.tabs.basicInfo_ar.spouseLastName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.spouseLastName_Ar" #spouseLastName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Basic Info English Tab-->
+                <div class="tab-pane" id="basicInfoEn">
+                    <div [@fadeInOut] *ngIf="isBasicInfoEnActivated" class="content-container">
+                        <!-- firstName_En -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="firstName_En-{{uniqueId}}">{{'profileControl.tabs.basicInfo_en.firstName_en.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.firstName_En}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && firstName_En.valid, 'has-error' : f.submitted && !firstName_En.valid}">
+                                <input type="text" attr.id="firstName_En-{{uniqueId}}" name="firstName_En" placeholder="{{'profileControl.tabs.basicInfo_en.firstName_en.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.firstName_En" #firstName_En="ngModel" maxlength="200"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+
+                        <!-- familyName_En -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="familyName_En-{{uniqueId}}">{{'profileControl.tabs.basicInfo_en.familyName_en.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.familyName_En}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && familyName_En.valid, 'has-error' : f.submitted && !familyName_En.valid}">
+                                <input type="text" attr.id="familyName_En-{{uniqueId}}" name="familyName_En" placeholder="{{'profileControl.tabs.basicInfo_en.familyName_en.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.familyName_En" #familyName_En="ngModel" maxlength="200"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- motherFirstName_En -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="motherFirstName_En-{{uniqueId}}">{{'profileControl.tabs.basicInfo_en.motherFirstName_en.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.motherFirstName_En}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && motherFirstName_En.valid, 'has-error' : f.submitted && !motherFirstName_En.valid}">
+                                <input type="text" attr.id="motherFirstName_En-{{uniqueId}}" name="motherFirstName_En" placeholder="{{'profileControl.tabs.basicInfo_en.motherFirstName_en.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.motherFirstName_En" #motherFirstName_En="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- motherLastName_En -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="motherLastName_En-{{uniqueId}}">{{'profileControl.tabs.basicInfo_en.motherLastName_en.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.motherLastName_En}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && motherLastName_En.valid, 'has-error' : f.submitted && !motherLastName_En.valid}">
+                                <input type="text" attr.id="motherLastName_En-{{uniqueId}}" name="motherLastName_En" placeholder="{{'profileControl.tabs.basicInfo_en.motherLastName_en.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.motherLastName_En" #motherLastName_En="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- spouseFirstName_En -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="spouseFirstName_En-{{uniqueId}}">{{'profileControl.tabs.basicInfo_en.spouseFirstName_en.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.spouseFirstName_En}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && spouseFirstName_En.valid, 'has-error' : f.submitted && !spouseFirstName_En.valid}">
+                                <input type="text" attr.id="spouseFirstName_En-{{uniqueId}}" name="spouseFirstName_En" placeholder="{{'profileControl.tabs.basicInfo_en.spouseFirstName_en.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.spouseFirstName_En" #spouseFirstName_En="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- spouseLastName_En -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="spouseLastName_En-{{uniqueId}}">{{'profileControl.tabs.basicInfo_en.spouseLastName_en.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.spouseLastName_En}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && spouseLastName_En.valid, 'has-error' : f.submitted && !spouseLastName_En.valid}">
+                                <input type="text" attr.id="spouseLastName_En-{{uniqueId}}" name="spouseLastName_En" placeholder="{{'profileControl.tabs.basicInfo_en.spouseLastName_en.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.spouseLastName_En" #spouseLastName_En="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Information Tab-->
+                <div class="tab-pane" id="contactInfo">
+                    <div [@fadeInOut] *ngIf="isContactInfoActivated" class="content-container">
+                        <!-- city -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="city-{{uniqueId}}">{{'profileControl.tabs.contactInfo.city.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.city}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && city.valid, 'has-error' : f.submitted && !city.valid}">
+                                <input type="text" attr.id="city-{{uniqueId}}" name="city" placeholder="{{'profileControl.tabs.contactInfo.city.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.city" #city="ngModel" maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- province -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="province-{{uniqueId}}">{{'profileControl.tabs.contactInfo.province.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.province}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && province.valid, 'has-error' : f.submitted && !province.valid}">
+                                <input type="text" attr.id="province-{{uniqueId}}" name="province" placeholder="{{'profileControl.tabs.contactInfo.province.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.province" #province="ngModel" maxlength="200"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- country -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="countryId-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.country.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="badge" style="margin-top: 3px;">{{getCountryByLocaleId(profile.countryId)}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && countryId.valid, 'has-error' : f.submitted && !countryId.valid}">
+                                <select attr.id="countryId-{{uniqueId}}" name="countryId" [(ngModel)]="profileEdit.countryId" #countryId="ngModel" class="selectpicker form-control"
+                                    bootstrapSelect show-tick data-live-search="true" data-actions-box="false" data-live-search-placeholder="Search..."
+                                    title="{{'profileControl.tabs.contactInfo.country.hint' | translate}}">
+                                    <option *ngFor="let countryLookupItem of getCountriesList()" attr.data-content="<span title='{{countryLookupItem.localeString}}' class='badge'>{{countryLookupItem.localeString}}</span>"
+                                        attr.value="{{countryLookupItem.localeId}}" selected>
+                                        {{countryLookupItem.localeString}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- displayEmail -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="displayEmail-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.displayEmail.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.displayEmail}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && displayEmail.valid, 'has-error' : f.submitted && !displayEmail.valid}">
+                                <input type="text" attr.id="displayEmail-{{uniqueId}}" name="displayEmail" placeholder="{{'profileControl.tabs.contactInfo.displayEmail.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.displayEmail" #displayEmail="ngModel" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"
+                                />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': displayEmail.valid, 'glyphicon-remove' : !displayEmail.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && displayEmail.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.contactInfo.displayEmail.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- displayPhone -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="displayPhone-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.displayPhone.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.displayPhone}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && displayPhone.valid, 'has-error' : f.submitted && !displayPhone.valid}">
+                                <input type="text" attr.id="displayPhone-{{uniqueId}}" name="displayPhone" placeholder="{{'profileControl.tabs.contactInfo.displayPhone.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.displayPhone" #displayPhone="ngModel" pattern="^\+?\d{0,13}"
+                                    maxlength="13" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': displayPhone.valid, 'glyphicon-remove' : !displayPhone.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && displayPhone.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.contactInfo.displayPhone.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- displayPhoneType -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="displayPhoneType-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.displayPhoneType.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="badge" style="margin-top: 3px;">
+                                    {{(profile.displayPhoneType == phoneType.Mobile? 'profileControl.tabs.contactInfo.displayPhoneType.options.mobile' : (profile.displayPhoneType
+                                    == phoneType.Business? 'profileControl.tabs.contactInfo.displayPhoneType.options.business'
+                                    : 'profileControl.tabs.contactInfo.displayPhoneType.options.home')) | translate}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && displayPhoneType.valid, 'has-error' : f.submitted && !displayPhoneType.valid}">
+                                <select attr.id="displayPhoneType-{{uniqueId}}" name="displayPhoneType" [(ngModel)]="profileEdit.displayPhoneType" #displayPhoneType="ngModel"
+                                    class="selectpicker form-control" bootstrapSelect show-tick data-live-search="false" [required]="profileEdit.displayPhone"
+                                    data-actions-box="false" data-live-search-placeholder="Search..." title="{{'profileControl.tabs.contactInfo.displayPhoneType.hint' | translate}}">
+                                    <option attr.data-content="<span title='{{'profileControl.tabs.contactInfo.displayPhoneType.options.mobile' | translate}}' class='badge'>{{'profileControl.tabs.contactInfo.displayPhoneType.options.mobile' | translate}}</span>"
+                                        attr.value="{{phoneType.Mobile}}" selected>
+                                        {{'profileControl.tabs.contactInfo.displayPhoneType.options.mobile' | translate}}
+                                    </option>
+                                    <option attr.data-content="<span title='{{'profileControl.tabs.contactInfo.displayPhoneType.options.business' | translate}}' class='badge'>{{'profileControl.tabs.contactInfo.displayPhoneType.options.business' | translate}}</span>"
+                                        attr.value="{{phoneType.Business}}" selected>
+                                        {{'profileControl.tabs.contactInfo.displayPhoneType.options.business' | translate}}
+                                    </option>
+                                    <option attr.data-content="<span title='{{'profileControl.tabs.contactInfo.displayPhoneType.options.home' | translate}}' class='badge'>{{'profileControl.tabs.contactInfo.displayPhoneType.options.home' | translate}}</span>"
+                                        attr.value="{{phoneType.Home}}" selected>
+                                        {{'profileControl.tabs.contactInfo.displayPhoneType.options.home' | translate}}
+                                    </option>
+                                </select>
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': displayPhoneType.valid, 'glyphicon-remove' : !displayPhoneType.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && displayPhoneType.errors?.required" class="errorMessage">
+                                    {{'profileControl.tabs.contactInfo.displayPhoneType.validations.required.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- facebook -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="facebook-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.facebook.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.facebook}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && facebook.valid, 'has-error' : f.submitted && !facebook.valid}">
+                                <input type="text" attr.id="facebook-{{uniqueId}}" name="facebook" placeholder="{{'profileControl.tabs.contactInfo.facebook.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.facebook" #facebook="ngModel" pattern="http://www\.facebook\.com\/(.+)|https://www\.facebook\.com\/(.+)"
+                                />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': facebook.valid, 'glyphicon-remove' : !facebook.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && facebook.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.contactInfo.facebook.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- linkedIn -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="linkedIn-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.linkedIn.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.linkedIn}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && linkedIn.valid, 'has-error' : f.submitted && !linkedIn.valid}">
+                                <input type="text" attr.id="linkedIn-{{uniqueId}}" name="linkedIn" placeholder="{{'profileControl.tabs.contactInfo.linkedIn.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.linkedIn" #linkedIn="ngModel" pattern="http://www\.linkedin\.com\/(.+)|https://www\.linkedin\.com\/(.+)"
+                                />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': linkedIn.valid, 'glyphicon-remove' : !linkedIn.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && linkedIn.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.contactInfo.linkedIn.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- website -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="website-{{uniqueId}}">
+                                {{'profileControl.tabs.contactInfo.website.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.website}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && website.valid, 'has-error' : f.submitted && !website.valid}">
+                                <input type="text" attr.id="website-{{uniqueId}}" name="website" placeholder="{{'profileControl.tabs.contactInfo.website.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.website" #website="ngModel" pattern="https?://.+"
+                                />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': website.valid, 'glyphicon-remove' : !website.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && website.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.contactInfo.website.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other Dependents (Arabic) Tav -->
+                <div class="tab-pane" id="otherDependentsAr">
+                    <div [@fadeInOut] *ngIf="isOtherDependentsArActivated" class="content-container">
+                        <!-- prvSpouseFirstName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="prvSpouseFirstName_Ar-{{uniqueId}}">{{'profileControl.tabs.otherDependentsAr.prvSpouseFirstName_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.prvSpouseFirstName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvSpouseFirstName_Ar.valid, 'has-error' : f.submitted && !prvSpouseFirstName_Ar.valid}">
+                                <input type="text" attr.id="prvSpouseFirstName_Ar-{{uniqueId}}" name="prvSpouseFirstName_Ar" placeholder="{{'profileControl.tabs.otherDependentsAr.prvSpouseFirstName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.prvSpouseFirstName_Ar" #prvSpouseFirstName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- prvSpouseLastName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="prvSpouseLastName_Ar-{{uniqueId}}">{{'profileControl.tabs.otherDependentsAr.prvSpouseLastName_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.prvSpouseLastName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvSpouseLastName_Ar.valid, 'has-error' : f.submitted && !prvSpouseLastName_Ar.valid}">
+                                <input type="text" attr.id="prvSpouseLastName_Ar-{{uniqueId}}" name="prvSpouseLastName_Ar" placeholder="{{'profileControl.tabs.otherDependentsAr.prvSpouseLastName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.prvSpouseLastName_Ar" #prvSpouseLastName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- prvPrvSpouseFirstName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="prvPrvSpouseFirstName_Ar-{{uniqueId}}">{{'profileControl.tabs.otherDependentsAr.prvPrvSpouseFirstName_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.prvPrvSpouseFirstName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvPrvSpouseFirstName_Ar.valid, 'has-error' : f.submitted && !prvPrvSpouseFirstName_Ar.valid}">
+                                <input type="text" attr.id="prvPrvSpouseFirstName_Ar-{{uniqueId}}" name="prvPrvSpouseFirstName_Ar" placeholder="{{'profileControl.tabs.otherDependentsAr.prvPrvSpouseFirstName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.prvPrvSpouseFirstName_Ar" #prvPrvSpouseFirstName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- prvPrvSpouseLastName_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="prvPrvSpouseLastName_Ar-{{uniqueId}}">{{'profileControl.tabs.otherDependentsAr.prvPrvSpouseLastName_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.prvPrvSpouseLastName_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvPrvSpouseLastName_Ar.valid, 'has-error' : f.submitted && !prvPrvSpouseLastName_Ar.valid}">
+                                <input type="text" attr.id="prvPrvSpouseLastName_Ar-{{uniqueId}}" name="prvPrvSpouseLastName_Ar" placeholder="{{'profileControl.tabs.otherDependentsAr.prvPrvSpouseLastName_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.prvPrvSpouseLastName_Ar" #prvPrvSpouseLastName_Ar="ngModel"
+                                    maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- femChildrenList_Ar -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="femChildrenList_Ar-{{uniqueId}}">{{'profileControl.tabs.otherDependentsAr.femChildrenList_ar.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.femChildrenList_Ar}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && femChildrenList_Ar.valid, 'has-error' : f.submitted && !femChildrenList_Ar.valid}">
+                                <input type="text" attr.id="femChildrenList_Ar-{{uniqueId}}" name="femChildrenList_Ar" placeholder="{{'profileControl.tabs.otherDependentsAr.femChildrenList_ar.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.femChildrenList_Ar" #femChildrenList_Ar="ngModel"
+                                    maxlength="500" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other Dependents (Latin) Tav -->
+                <div class="tab-pane" id="otherDependentsEn">
+                    <div [@fadeInOut] *ngIf="isOtherDependentsEnActivated" class="content-container">
+                        <!-- prvSpouseFirstName_En -->
+                        <div class="form-group has-feedback">
+                                <label class="col-md-4 control-label" for="prvSpouseFirstName_En-{{uniqueId}}">{{'profileControl.tabs.otherDependentsEn.prvSpouseFirstName_en.label' | translate}}</label>
+                                <div *ngIf="!isEditMode" class="col-md-8">
+                                    <p class="form-control-static">{{profile.prvSpouseFirstName_En}}</p>
+                                </div>
+                                <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvSpouseFirstName_En.valid, 'has-error' : f.submitted && !prvSpouseFirstName_En.valid}">
+                                    <input type="text" attr.id="prvSpouseFirstName_En-{{uniqueId}}" name="prvSpouseFirstName_En" placeholder="{{'profileControl.tabs.otherDependentsEn.prvSpouseFirstName_en.hint' | translate}}"
+                                        class="form-control" [(ngModel)]="profileEdit.prvSpouseFirstName_En" #prvSpouseFirstName_En="ngModel"
+                                        maxlength="200" />
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                                </div>
+                            </div>
+                            <!-- prvSpouseLastName_En -->
+                            <div class="form-group has-feedback">
+                                <label class="col-md-4 control-label" for="prvSpouseLastName_En-{{uniqueId}}">{{'profileControl.tabs.otherDependentsEn.prvSpouseLastName_en.label' | translate}}</label>
+                                <div *ngIf="!isEditMode" class="col-md-8">
+                                    <p class="form-control-static">{{profile.prvSpouseLastName_En}}</p>
+                                </div>
+                                <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvSpouseLastName_En.valid, 'has-error' : f.submitted && !prvSpouseLastName_En.valid}">
+                                    <input type="text" attr.id="prvSpouseLastName_En-{{uniqueId}}" name="prvSpouseLastName_En" placeholder="{{'profileControl.tabs.otherDependentsEn.prvSpouseLastName_en.hint' | translate}}"
+                                        class="form-control" [(ngModel)]="profileEdit.prvSpouseLastName_En" #prvSpouseLastName_En="ngModel"
+                                        maxlength="200" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                                </div>
+                            </div>
+                            <!-- prvPrvSpouseFirstName_En -->
+                            <div class="form-group has-feedback">
+                                <label class="col-md-4 control-label" for="prvPrvSpouseFirstName_En-{{uniqueId}}">{{'profileControl.tabs.otherDependentsEn.prvPrvSpouseFirstName_en.label' | translate}}</label>
+                                <div *ngIf="!isEditMode" class="col-md-8">
+                                    <p class="form-control-static">{{profile.prvPrvSpouseFirstName_En}}</p>
+                                </div>
+                                <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvPrvSpouseFirstName_En.valid, 'has-error' : f.submitted && !prvPrvSpouseFirstName_En.valid}">
+                                    <input type="text" attr.id="prvPrvSpouseFirstName_En-{{uniqueId}}" name="prvPrvSpouseFirstName_En" placeholder="{{'profileControl.tabs.otherDependentsEn.prvPrvSpouseFirstName_en.hint' | translate}}"
+                                        class="form-control" [(ngModel)]="profileEdit.prvPrvSpouseFirstName_En" #prvPrvSpouseFirstName_En="ngModel"
+                                        maxlength="200" />
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                                </div>
+                            </div>
+                            <!-- prvPrvSpouseLastName_En -->
+                            <div class="form-group has-feedback">
+                                <label class="col-md-4 control-label" for="prvPrvSpouseLastName_En-{{uniqueId}}">{{'profileControl.tabs.otherDependentsEn.prvPrvSpouseLastName_en.label' | translate}}</label>
+                                <div *ngIf="!isEditMode" class="col-md-8">
+                                    <p class="form-control-static">{{profile.prvPrvSpouseLastName_En}}</p>
+                                </div>
+                                <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && prvPrvSpouseLastName_En.valid, 'has-error' : f.submitted && !prvPrvSpouseLastName_En.valid}">
+                                    <input type="text" attr.id="prvPrvSpouseLastName_En-{{uniqueId}}" name="prvPrvSpouseLastName_En" placeholder="{{'profileControl.tabs.otherDependentsEn.prvPrvSpouseLastName_en.hint' | translate}}"
+                                        class="form-control" [(ngModel)]="profileEdit.prvPrvSpouseLastName_En" #prvPrvSpouseLastName_En="ngModel"
+                                        maxlength="200" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                                </div>
+                            </div>
+                            <!-- femChildrenList_En -->
+                            <div class="form-group has-feedback">
+                                <label class="col-md-4 control-label" for="femChildrenList_En-{{uniqueId}}">{{'profileControl.tabs.otherDependentsEn.femChildrenList_en.label' | translate}}</label>
+                                <div *ngIf="!isEditMode" class="col-md-8">
+                                    <p class="form-control-static">{{profile.femChildrenList_En}}</p>
+                                </div>
+                                <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && femChildrenList_En.valid, 'has-error' : f.submitted && !femChildrenList_En.valid}">
+                                    <input type="text" attr.id="femChildrenList_En-{{uniqueId}}" name="femChildrenList_En" placeholder="{{'profileControl.tabs.otherDependentsEn.femChildrenList_en.hint' | translate}}"
+                                        class="form-control" [(ngModel)]="profileEdit.femChildrenList_En" #femChildrenList_En="ngModel"
+                                        maxlength="500" />
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- Misc. Tab-->
+                <div class="tab-pane" id="miscellaneous">
+                    <div [@fadeInOut] *ngIf="isMiscellaneousActivated" class="content-container">
+                        <!-- genderId -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="genderId-{{uniqueId}}">{{'profileControl.tabs.miscellaneous.gender.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">
+                                    <i *ngIf="profile.gender == gender.Female" style="color:pink" class="fa fa-female fa-2" aria-hidden="true"></i>
+                                    <i *ngIf="profile.gender == gender.Male" style="color:lightblue" class="fa fa-male" aria-hidden="true"></i>
+                                    {{(profile.gender == gender.Male ? 'home.familyMembers.gender.male' : 'home.familyMembers.gender.female') | translate}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && gender.valid, 'has-error' : f.submitted && !genderId.valid}">
+                                <!-- FIXME: Localization for the Gender label is not applied -->
+                                <input name="gender" class="form-control" type="checkbox" bootstrapToggle #genderId="bootstrap-toggle" [(ngModel)]="profileEdit.genderSelection"
+                                    (ngModelChange)="onGenderValueChange($event)" data-on="<i class='fa fa-male fa-fw' style='color:lightblue'></i> Male"
+                                    data-off="<i class='fa fa-female fa-fw' style='color:pink'></i> Female">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+
+                        <!-- birthYear -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="birthYear-{{uniqueId}}">
+                                {{'profileControl.tabs.miscellaneous.birthYear.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.birthYear}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && birthYear.valid, 'has-error' : f.submitted && !birthYear.valid}">
+                                <input type="number" attr.id="birthYear-{{uniqueId}}" name="birthYear" placeholder="{{'profileControl.tabs.miscellaneous.birthYear.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.birthYear" #birthYear="ngModel"
+                                    maxlength="4" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': birthYear.valid, 'glyphicon-remove' : !birthYear.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && birthYear.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.miscellaneous.birthYear.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- maritalStatus -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="maritalStatus-{{uniqueId}}">{{'profileControl.tabs.miscellaneous.maritalStatus.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">
+                                    <i *ngIf="profile.maritalStatus == maritalStatus.Married" class="fa fa-diamond" aria-hidden="true"></i>
+                                    <span *ngIf="profile.maritalStatus == maritalStatus.NotMarried" class="fa-stack">
+                                        <i class="fa fa-diamond fa-stack-1x"></i>
+                                        <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                                    </span>
+                                    {{(profile.maritalStatus == maritalStatus.Married ? 'profileControl.tabs.miscellaneous.maritalStatus.options.married' : (profile.maritalStatus
+                                    == maritalStatus.NotMarried? 'profileControl.tabs.miscellaneous.maritalStatus.options.notMarried'
+                                    : 'profileControl.tabs.miscellaneous.maritalStatus.options.none')) | translate}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && gender.valid, 'has-error' : f.submitted && !maritalStatus.valid}">
+                                <!-- FIXME: Localization for the Gender label is not applied -->
+                                <input name="maritalStatus" class="form-control" type="checkbox" bootstrapToggle #maritalStatusSelection="bootstrap-toggle"
+                                    [(ngModel)]="profileEdit.maritalStatusSelection" data-on="Married" data-off="Not Married">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- horoscope -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="horoscopeId-{{uniqueId}}">
+                                {{'profileControl.tabs.miscellaneous.horoscope.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="badge" style="margin-top: 3px;">{{getHoroscopeByLocaleId(profile.horoscopeId)}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && horoscopeId.valid, 'has-error' : f.submitted && !horoscopeId.valid}">
+                                <select attr.id="horoscopeId-{{uniqueId}}" name="horoscopeId" [(ngModel)]="profileEdit.horoscopeId" #horoscopeId="ngModel"
+                                    class="selectpicker form-control" bootstrapSelect show-tick data-live-search="true" data-actions-box="false"
+                                    data-live-search-placeholder="Search..." title="{{'profileControl.tabs.miscellaneous.horoscope.hint' | translate}}">
+                                    <option *ngFor="let horoscopeLookupItem of getHoroscopesList()" attr.data-content="<span title='{{horoscopeLookupItem.localeString}}' class='badge'>{{horoscopeLookupItem.localeString}}</span>"
+                                        attr.value="{{horoscopeLookupItem.localeId}}" selected>
+                                        {{horoscopeLookupItem.localeString}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- passedAway -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="passedAway-{{uniqueId}}">{{'profileControl.tabs.miscellaneous.passedAway.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">
+                                    {{(profile.passedAway? 'profileControl.tabs.miscellaneous.passedAway.options.yes': 'profileControl.tabs.miscellaneous.passedAway.options.no') | translate}}
+                                </p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && passedAway.valid, 'has-error' : f.submitted && !passedAway.valid}">
+                                <!-- FIXME: Localization for the Gender label is not applied -->
+                                <input name="passedAway" class="form-control" type="checkbox" bootstrapToggle #passedAway="bootstrap-toggle"
+                                    [(ngModel)]="profileEdit.passedAway" data-on="Yes" data-off="No">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                        <!-- deathYear -->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="deathYear-{{uniqueId}}">
+                                {{'profileControl.tabs.miscellaneous.deathYear.label' | translate}}
+                            </label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">{{profile.deathYear}}</p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && deathYear.valid, 'has-error' : f.submitted && !deathYear.valid}">
+                                <input type="number" attr.id="deathYear-{{uniqueId}}" name="deathYear" placeholder="{{'profileControl.tabs.miscellaneous.deathYear.hint' | translate}}"
+                                    class="form-control" [(ngModel)]="profileEdit.deathYear" #deathYear="ngModel"
+                                    maxlength="4" />
+                                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': deathYear.valid, 'glyphicon-remove' : !deathYear.valid}"></span>
+                                <span *ngIf="showValidationErrors && f.submitted && deathYear.errors?.pattern" class="errorMessage">
+                                    {{'profileControl.tabs.miscellaneous.deathYear.validations.pattern.message' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+                            </div>
+                        </div>
+                         <!-- spousePassedAway -->
+                         <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label" for="spousePassedAway-{{uniqueId}}">{{'profileControl.tabs.miscellaneous.spousePassedAway.label' | translate}}</label>
+                            <div *ngIf="!isEditMode" class="col-md-8">
+                                <p class="form-control-static">
+                                    {{(profile.spousePassedAway? 'profileControl.tabs.miscellaneous.spousePassedAway.options.yes': 'profileControl.tabs.miscellaneous.spousePassedAway.options.no') | translate}}
+                                </p>
+                            </div>
+                            <div *ngIf="isEditMode" class="col-md-8" [ngClass]="{'has-success': f.submitted && spousePassedAway.valid, 'has-error' : f.submitted && !spousePassedAway.valid}">
+                                <!-- FIXME: Localization for the Gender label is not applied -->
+                                <input name="spousePassedAway" class="form-control" type="checkbox" bootstrapToggle #spousePassedAway="bootstrap-toggle"
+                                    [(ngModel)]="profileEdit.spousePassedAway" data-on="Yes" data-off="No">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="!isViewOnly" class="row">
+            <div class="col-md-12">
+                <hr [class.last-separator-hr]="!isEditMode" [class.edit-last-separator-hr]="isEditMode" />
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div *ngIf="!isViewOnly" class="form-group">
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <button *ngIf="!isEditMode && !isGeneralEditor" type="button" (click)="close()" class="btn btn-default">
+                        <i class='fa fa-close'></i> {{'profileControl.close' | translate}}</button>
+                    <button *ngIf="!isEditMode && !isGeneralEditor" type="button" (click)="edit()" class="btn btn-default">
+                        <i class='fa fa-edit'></i> {{'profileControl.requestUpdate' | translate}}</button>
+                    <button *ngIf="isEditMode" type="button" (click)="cancel()" class="btn btn-danger" [disabled]="isSaving">
+                        <i class='fa fa-times'></i> {{'profileControl.cancel' | translate}}</button>
+                    <button *ngIf="isEditMode" type="submit" class="btn btn-primary" [disabled]="isSaving">
+                        <i *ngIf="!isSaving" class='fa fa-save'></i>
+                        <i *ngIf="isSaving" class='fa fa-circle-o-notch fa-spin'></i> {{isSaving ? ('profileControl.saving' | translate) : ('profileControl.save' | translate)}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+</div>

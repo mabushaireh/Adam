@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{12326D87-9743-448D-B052-8A3BF6F1B707}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{FCC25FE0-49E2-4F64-A0FB-81E752040211}"
+	ProjectSection(SolutionItems) = preProject
+		Tools\AddMissingSPtoAzureSQL.sql = Tools\AddMissingSPtoAzureSQL.sql
+		Tools\CleanDatabase.sql = Tools\CleanDatabase.sql
+		Tools\Settings.StyleCop = Tools\Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "i2fam.Web", "src\Web\i2fam.Web.csproj", "{4495C125-C026-4C45-ABC2-36401B692B2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "i2fam.Core", "src\Core\i2fam.Core.csproj", "{39E9C540-5286-407D-8441-3CB9E77AA685}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "i2fam.DAL", "src\DAL\i2fam.DAL.csproj", "{4796EF76-0EBC-402B-A2A3-6C298A1C3369}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Azure-Dev|Any CPU = Azure-Dev|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4495C125-C026-4C45-ABC2-36401B692B2D}.Azure-Dev|Any CPU.ActiveCfg = Azure-Dev|Any CPU
+		{4495C125-C026-4C45-ABC2-36401B692B2D}.Azure-Dev|Any CPU.Build.0 = Azure-Dev|Any CPU
+		{4495C125-C026-4C45-ABC2-36401B692B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4495C125-C026-4C45-ABC2-36401B692B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4495C125-C026-4C45-ABC2-36401B692B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4495C125-C026-4C45-ABC2-36401B692B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39E9C540-5286-407D-8441-3CB9E77AA685}.Azure-Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E9C540-5286-407D-8441-3CB9E77AA685}.Azure-Dev|Any CPU.Build.0 = Debug|Any CPU
+		{39E9C540-5286-407D-8441-3CB9E77AA685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E9C540-5286-407D-8441-3CB9E77AA685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E9C540-5286-407D-8441-3CB9E77AA685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E9C540-5286-407D-8441-3CB9E77AA685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369}.Azure-Dev|Any CPU.ActiveCfg = Azure-Dev|Any CPU
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369}.Azure-Dev|Any CPU.Build.0 = Azure-Dev|Any CPU
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4495C125-C026-4C45-ABC2-36401B692B2D} = {12326D87-9743-448D-B052-8A3BF6F1B707}
+		{39E9C540-5286-407D-8441-3CB9E77AA685} = {12326D87-9743-448D-B052-8A3BF6F1B707}
+		{4796EF76-0EBC-402B-A2A3-6C298A1C3369} = {12326D87-9743-448D-B052-8A3BF6F1B707}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCF78C66-6A41-4E4D-B941-678F1B286542}
+	EndGlobalSection
+EndGlobal

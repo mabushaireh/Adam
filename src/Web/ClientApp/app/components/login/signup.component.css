@@ -1,0 +1,9 @@
+﻿.fa-xs {
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px; 
+    margin-left: 0px; 
+}
