@@ -1,6 +1,6 @@
 /* test remote push */
 
-use [qubaininfo-prod-db]
+use [db-adam-dev]
 GO
 
 CREATE proc [dbo].[sp_MSforeachtable]
