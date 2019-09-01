@@ -1,3 +1,4 @@
+/* test remote push */
 
 use [qubaininfo-prod-db]
 GO
