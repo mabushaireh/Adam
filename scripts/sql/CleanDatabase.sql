@@ -1,4 +1,4 @@
-﻿USE [qubaininfo-prod-db]
+﻿USE [Adaminfo-prod-db]
 GO
 
 USE i2fam

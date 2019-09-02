@@ -4,11 +4,11 @@
     "description": "",
     "author": {
         "name": "i2be",
-        "email": "info@i2be.com",
-        "url": "http://www.i2be.com"
+        "email": "info@mabushaireh.info",
+        "url": "http://www.mabushaireh.info"
     },
     "license": "MIT",
-    "homepage": "http://www.i2be.com",
+    "homepage": "http://www.mabushaireh.info",
     "repository": "https://i2fam.visualstudio.com/i2fam/_git/i2fam",
     "dependencies": {
         "@angular/animations": "4.3.6",

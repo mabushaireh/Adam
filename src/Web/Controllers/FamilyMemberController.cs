@@ -133,7 +133,7 @@ namespace i2fam.Web.Controllers
 
             var response = await EmailSender.SendEmailAsync(
                     recipients,
-                    subject: "Qubain.info Request Family Member Update",
+                    subject: "Adam.info Request Family Member Update",
                     content: EmailTemplates.GetFamilyMemberUpdatedEmail(requestParam, "en"),
                     isHtml: true,
                     addBccs: false);

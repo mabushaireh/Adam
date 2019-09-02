@@ -1,7 +1,7 @@
 -- CREATE DATABASE i2fam
 -- GO
 
-USE [qubaininfo-prod-db]
+USE [Adaminfo-prod-db]
 GO
 
 use i2fam

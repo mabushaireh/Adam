@@ -1,7 +1,7 @@
 ﻿// ======================================
 // Author: Mahmood Abushaireh
 // Email:  mabushaireh@outlook.com
-// Copyright (c) 2017 www.i2be.com
+// Copyright (c) 2017 www.mabushaireh.info
 // 
 
 // ======================================
@@ -55,7 +55,7 @@ namespace i2fam.DAL
             {
                 await this.EnsureRoleAsync(ApplicationRole.AdminRoleName, "Default administrator", ApplicationPermissions.GetAdministrativePermissionValues());
                 await this.EnsureRoleAsync(ApplicationRole.UserRoleName, "Default user", ApplicationPermissions.GetStanderdMemberPermissionValues());
-                await this.CreateUserAsync("basilsq@live.com", "Bluewow", "Basil", "Qubain", "+962778200028", new string[] { ApplicationRole.AdminRoleName });
+                await this.CreateUserAsync("Adam@mabushaireh.info", "tempP@ssaw0rd", "Adam", "Adam", "+962000000000", new string[] { ApplicationRole.AdminRoleName });
             }
 
             if (!await this.context.FamilyMembers.AnyAsync())

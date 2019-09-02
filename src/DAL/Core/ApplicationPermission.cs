@@ -1,7 +1,7 @@
 // ======================================
 // Author: Mahmood Abushaireh
 // Email:  mabushaireh@outlook.com
-// Copyright (c) 2017 www.i2be.com
+// Copyright (c) 2017 www.mabushaireh.info
 // 
 //TODO: add description
 // ======================================

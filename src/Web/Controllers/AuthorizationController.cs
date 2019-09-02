@@ -1,7 +1,7 @@
 ﻿// ======================================
 // Author: Mahmood Abushaireh
 // Email:  mabushaireh@outlook.com
-// Copyright (c) 2017 www.i2be.com
+// Copyright (c) 2017 www.mabushaireh.info
 // 
 //TODO: add description
 // ======================================
@@ -309,7 +309,7 @@ namespace i2fam.Web.Controllers
 
                     var response = await EmailSender.SendEmailAsync(
                     recipients,
-                    subject: "Qubain.info Account Information",
+                    subject: "Adam.info Account Information",
                     content: EmailTemplates.GetAccountCreatedEmail(requestParam, "en"),
                     isHtml: true,
                     addBccs: true);
