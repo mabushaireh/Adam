@@ -47,7 +47,7 @@
         "flag-icon-css": "^2.8.0",
         "font-awesome": "4.7.0",
         "html-loader": "0.5.1",
-        "jquery": "3.2.1",
+        "jquery": "3.5.0",
         "json-loader": "0.5.7",
         "ng-org-chart": "1.2.0",
         "ng2-charts": "1.6.0",
